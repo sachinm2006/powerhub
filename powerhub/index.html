@@ -8,13 +8,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
+    <!-- Firebase SDKs (compat) + config for auth state on every page -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script defer src="firebase-config.js"></script>
   </head>
   <body>
     <header class="site-header">
       <div class="brand">PowerHub</div>
       <nav class="top-right">
         <div class="phone">Call us: <a class="phone-link" href="tel:1234567890"><strong>1234567890</strong></a></div>
-        <a class="glass-btn" href="login.html">Login</a>
+        <div id="user-area" class="user-area"> <a class="glass-btn" href="login.html">Login</a> </div>
       </nav>
     </header>
 

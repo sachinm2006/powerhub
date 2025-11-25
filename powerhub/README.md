@@ -28,10 +28,16 @@ python -m http.server 5500
 3. Open http://localhost:5500 (or the port your server uses) to view the site.
 
 Firebase setup (required for login functionality)
-1. Create a Firebase project at https://console.firebase.google.com.
-2. In the project settings, copy your Web SDK config and replace the placeholders in `firebase-config.js`.
+1. This workspace already contains a working Firebase config for the project `powerhub-6206c` (see `firebase-config.js`). If you prefer to use a different Firebase project, replace the values in `firebase-config.js` with your project's web config.
 3. In Authentication -> Sign-in method, enable Email/Password and Phone providers.
-4. For Phone Auth testing, add test phone numbers in Firebase Console (recommended).
+4. For Phone Auth testing, add test phone numbers in Firebase Console (recommended). Phone sign-in requires reCAPTCHA, which the project uses in an invisible mode (see the login page's reCAPTCHA container).
+
+Testing authentication locally
+- Serve the folder locally (eg. `python -m http.server 5500`), open the login page and try:
+	- Email sign-up / sign-in directly on the page
+	- Phone sign-in (you can use test numbers configured in Firebase Console to avoid SMS charges)
+
+If you'd like, I can also deploy this site to Firebase Hosting using the existing project and add continuous deployment steps.
 
 Notes
 - The project uses the Firebase compat CDN SDK on `login.html`. For production, consider upgrading to the modular SDK and properly protecting API credentials.

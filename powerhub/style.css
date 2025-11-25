@@ -38,6 +38,10 @@ body{
 .top-right{display:flex;align-items:center;gap:14px}
 .top-right .phone-link{color:rgba(233,240,255,0.95);text-decoration:none;border-bottom:1px dashed rgba(233,240,255,0.06)}
 .top-right .phone{font-size:0.95rem;color:rgba(233,240,255,0.85)}
+.user-area{display:flex;align-items:center;gap:8px}
+.user-pill{display:flex;align-items:center;gap:10px}
+.user-name{font-weight:600;padding:8px 10px;border-radius:10px;background:linear-gradient(120deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.06)}
+.user-area .glass-btn{padding:8px 10px}
 .site-footer{padding:18px 2%;margin-top:40px;color:rgba(200,210,230,0.72);border-top:1px solid rgba(255,255,255,0.02)}
 .footer-inner{display:flex;justify-content:space-between;align-items:center}
 
@@ -98,13 +102,23 @@ body{
 
 .equipment-section{margin-top:34px}
 .equipment-row{display:flex;gap:14px;padding:18px;overflow-x:auto;align-items:stretch}
-.equip-tile{min-width:180px;padding:16px;border-radius:12px;text-align:center;background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.06)}
-.equip-tile .icon{height:90px;background:linear-gradient(120deg,var(--neon-cyan),var(--neon-purple));border-radius:14px;margin-bottom:12px;box-shadow:0 10px 30px rgba(177,76,255,0.06)}
+.equip-tile{min-width:180px;padding:16px;border-radius:12px;text-align:left;color:rgba(255,255,255,0.95);border:1px solid rgba(255,255,255,0.06);background-color:rgba(255,255,255,0.02);background-size:cover;background-position:center;position:relative;overflow:hidden}
+.equip-tile::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.45));z-index:1;transition:opacity var(--transition)}
+.equip-tile > *{position:relative;z-index:2}
 .equip-tile .icon.cardio{background-image:linear-gradient(120deg,#00f0ff,#36a3ff)}
 .equip-tile .icon.strength{background-image:linear-gradient(120deg,#b14cff,#ff5ec5)}
 .equip-tile .icon.crossfit{background-image:linear-gradient(120deg,#00f0ff,#b14cff)}
-.equip-tile .desc{opacity:0;transform:translateY(8px);transition:all var(--transition);font-size:0.9rem;color:rgba(233,240,255,0.8)}
+.equip-tile .desc{opacity:0;transform:translateY(8px);transition:all var(--transition);font-size:0.9rem;color:rgba(233,240,255,0.9)}
 .equip-tile:hover .desc{opacity:1;transform:translateY(0)}
+
+/* background images for equipment categories (no inline styles) */
+.equip-tile.cardio{background-image: url('https://images.unsplash.com/photo-1558611848-73f7eb4001d5?auto=format&fit=crop&w=1600&q=80');}
+.equip-tile.strength{background-image: url('https://images.unsplash.com/photo-1597380848291-7e8f622f9be4?auto=format&fit=crop&w=1600&q=80');}
+.equip-tile.crossfit{background-image: url('https://images.unsplash.com/photo-1613581626635-7c7b18aaed18?auto=format&fit=crop&w=1600&q=80');}
+.equip-tile.recovery{background-image: url('https://images.unsplash.com/photo-1546484959-fcf7f7c1b7d7?auto=format&fit=crop&w=1600&q=80');}
+
+.equip-tile:hover::after{opacity:0.08}
+.equip-tile .label{font-weight:700;font-size:1rem;margin-bottom:6px}
 
 /* Equipment gallery and bodybuilder background images removed per revert request */
 

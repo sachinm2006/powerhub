@@ -33,4 +33,35 @@ document.addEventListener('DOMContentLoaded', () => {
       if(!isDown) return; e.preventDefault(); const x = e.pageX - row.offsetLeft; const walk = (x - startX) * 1.2; row.scrollLeft = scrollLeft - walk; 
     })
   })
+
+  // ----------------- Firebase auth UI (if firebase present) -----------------
+  function setupAuthUI(){
+    if(typeof firebase === 'undefined' || !firebase.auth) return false;
+    const userArea = document.getElementById('user-area');
+    firebase.auth().onAuthStateChanged(user => {
+      if(!user){
+        if(userArea) userArea.innerHTML = `<a class="glass-btn" href="login.html">Login</a>`;
+        return;
+      }
+      const display = user.email || user.phoneNumber || 'Member';
+      if(userArea) userArea.innerHTML = `
+        <div class="user-pill">
+          <span class="user-name">${display}</span>
+          <button id="signout-btn" class="glass-btn">Sign out</button>
+        </div>
+      `;
+
+      const signOutBtn = document.getElementById('signout-btn');
+      signOutBtn && signOutBtn.addEventListener('click', async () => {
+        try{ await firebase.auth().signOut(); window.location.href = 'index.html'; }catch(e){console.error(e); alert('Sign-out error')}
+      });
+    })
+    return true;
+  }
+
+  // try to wire auth UI (some pages load firebase-config later) — poll for availability up to a short timeout
+  let tried = 0;
+  const tryAuthInterval = setInterval(()=>{
+    if(setupAuthUI() || tried++ > 8) clearInterval(tryAuthInterval);
+  }, 300);
 })

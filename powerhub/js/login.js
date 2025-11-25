@@ -27,6 +27,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
+  // ----- register / create account -----
+  const emailRegisterBtn = document.getElementById('email-register');
+  emailRegisterBtn && emailRegisterBtn.addEventListener('click', async () => {
+    const email = document.getElementById('email').value;
+    const pass = document.getElementById('password').value;
+    if(!email || !pass) return alert('Please enter email and password to register');
+    try{
+      const userCred = await firebase.auth().createUserWithEmailAndPassword(email, pass);
+      document.getElementById('auth-message').innerText = `Account created — signed in as ${userCred.user.email}`;
+      window.setTimeout(()=> window.location.href = 'index.html', 900);
+    }catch(err){console.error(err);alert('Registration failed: '+err.message)}
+  })
+
   // ----- phone sign-in (OTP) -----
   let recaptchaVerifier = null;
   let confirmationResult = null;
@@ -62,5 +75,28 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = 'index.html';
     }catch(err){console.error(err);alert('OTP verification error: '+ err.message)}
   })
+
+  // sign-out link (in case present on page)
+  const signOutLink = document.getElementById('signout-btn');
+  signOutLink && signOutLink.addEventListener('click', async () => {
+    try{
+      await firebase.auth().signOut();
+      alert('Signed out');
+      window.location.href = 'index.html';
+    }catch(e){console.error(e);alert('Sign-out error')}
+  })
+
+  // update UI on auth state change
+  if(typeof firebase !== 'undefined' && firebase.auth){
+    firebase.auth().onAuthStateChanged(user => {
+      const message = document.getElementById('auth-message');
+      if(user){
+        if(message) message.innerText = `Signed in as ${user.email || user.phoneNumber}`;
+        // redirect away if already signed in
+      }else{
+        if(message) message.innerText = '';
+      }
+    })
+  }
 
 })

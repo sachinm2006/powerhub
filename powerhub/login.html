@@ -17,7 +17,7 @@
       <div class="brand">PowerHub</div>
       <nav class="top-right">
         <div class="phone">Call us: <a class="phone-link" href="tel:1234567890"><strong>1234567890</strong></a></div>
-        <a class="glass-btn" href="index.html">Home</a>
+        <div id="user-area" class="user-area"> <a class="glass-btn" href="index.html">Home</a> </div>
       </nav>
     </header>
 
@@ -33,7 +33,10 @@
           <div id="email-section" class="auth-section">
             <input id="email" type="email" placeholder="Email address" />
             <input id="password" type="password" placeholder="Password" />
-            <button id="email-login" class="glass-btn primary-cta">Sign in</button>
+            <div class="auth-actions">
+              <button id="email-login" class="glass-btn primary-cta">Sign in</button>
+              <button id="email-register" class="glass-btn">Create account</button>
+            </div>
           </div>
 
           <div id="phone-section" class="auth-section hidden">
@@ -45,6 +48,7 @@
           </div>
 
           <div class="auth-footer">Your data is secure with PowerHub</div>
+          <div id="auth-message" class="auth-footer" style="font-size:0.9rem;opacity:0.85"></div>
         </div>
       </div>
     </main>
