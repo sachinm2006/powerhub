@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PowerHub — Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <!-- Firebase SDKs (compat version) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script defer src="firebase-config.js"></script>
+    <script defer src="js/login.js"></script>
+  </head>
+  <body class="login-bg">
+    <header class="site-header small">
+      <div class="brand">PowerHub</div>
+      <nav class="top-right">
+        <div class="phone">Call us: <a class="phone-link" href="tel:1234567890"><strong>1234567890</strong></a></div>
+        <div id="user-area" class="user-area"> <a class="glass-btn" href="index.html">Home</a> </div>
+      </nav>
+    </header>
+
+    <main class="login-main">
+      <div class="login-wrapper container">
+        <div class="auth-panel glass-card auth-card">
+          <h2>Login to PowerHub</h2>
+          <div class="auth-toggle">
+            <button id="show-email" class="toggle-btn active">Login with Email</button>
+            <button id="show-phone" class="toggle-btn">Login with Phone</button>
+          </div>
+
+          <div id="email-section" class="auth-section">
+            <input id="email" type="email" placeholder="Email address" />
+            <input id="password" type="password" placeholder="Password" />
+            <div class="auth-actions">
+              <button id="email-login" class="glass-btn primary-cta">Sign in</button>
+              <button id="email-register" class="glass-btn">Create account</button>
+            </div>
+          </div>
+
+          <div id="phone-section" class="auth-section hidden">
+            <input id="phone" type="tel" placeholder="+1 555 555 1234" />
+            <div id="recaptcha-container"></div>
+            <button id="phone-send" class="glass-btn primary-cta">Send Code (OTP)</button>
+            <input id="otp" type="text" placeholder="Enter OTP" class="otp-field hidden" />
+            <button id="phone-verify" class="glass-btn hidden">Verify OTP</button>
+          </div>
+
+          <div class="auth-footer">Your data is secure with PowerHub</div>
+          <div id="auth-message" class="auth-footer" style="font-size:0.9rem;opacity:0.85"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer small">
+      <div class="container footer-inner">© PowerHub</div>
+    </footer>
+
+  </body>
+</html>
