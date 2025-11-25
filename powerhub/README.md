@@ -38,6 +38,10 @@ Testing authentication locally
 	- Phone sign-in (you can use test numbers configured in Firebase Console to avoid SMS charges)
 
 If you'd like, I can also deploy this site to Firebase Hosting using the existing project and add continuous deployment steps.
+ 
+GitHub Pages
+- A GitHub Actions workflow was added to this repository and will deploy the `powerhub/` directory to GitHub Pages automatically on pushes to `main`.
+- Expected public URL (once the Pages workflow completes): https://sachinm2006.github.io/powerhub/
 
 Notes
 - The project uses the Firebase compat CDN SDK on `login.html`. For production, consider upgrading to the modular SDK and properly protecting API credentials.
